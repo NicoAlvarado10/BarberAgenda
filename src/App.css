@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+    max-width: 1200px; /* Ajusta el ancho máximo de la aplicación */
+    border-radius: 8px; /* Esquinas redondeadas */
+    padding: 20px; /* Agrega un poco de espacio alrededor */
+    margin: 0 auto;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.app{
+    display: flex;
+    gap: 5rem;
+}
+h1 {
+    color: #333;
+    text-align: center;
+    padding-bottom: 1rem;
+    font-size: 2.5rem;
+    padding-top: 2rem;
+}
+
+h2 {
+    margin-top: 20px;
+}
+form{
+    padding: 20px;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    flex-basis: 50%;
+    box-shadow: 0px 0px 5px 0px rgba(185, 181, 181, 0.5);
+}
+
+input {
+    margin: 5px 0; /* Margen vertical */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Siempre ocupará el 100% en pantallas pequeñas */
+    display: flex;
+    flex-direction: column;
+}
+.valores{
+    width: 100%;
+}
+button {
+    padding: 10px 15px;
+    margin: 5px 0; /* Margen vertical */
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Siempre ocupará el 100% en pantallas pequeñas */
+    text-align: center;
+}
+
+button:hover {
+    background-color: #0056b3;
+    
+}
+.reporte{
+    box-shadow: 0px 0px 5px 0px rgba(185, 181, 181, 0.5);
+    padding: 0px 20px;
+    padding-right: 40px;
+    border-radius: 0.5rem;
+    height: 125px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.turnos{
+    box-shadow: 0px 0px 5px 0px rgba(185, 181, 181, 0.5);
+    padding: 0 20px;
+    border-radius: 0.5rem;
+    padding-bottom: 20px;
+    
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+.acciones {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 630px) {
+    .app {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    th, td {
+        padding: 8px; /* Menos padding para celdas */
+        font-size: 14px; /* Tamaño de fuente más pequeño */
+    }
+
+    .acciones {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    }
+
+    /* Opcional: Ajusta el tamaño de los botones para que se adapten mejor */
+    button {
+        margin: 5px 0; /* Margen vertical */
+        width: 100%;
+    }
+
+    table {
+        
+        overflow-x: auto; /* Habilitar scroll horizontal */
+        white-space: nowrap; /* Evitar que el contenido se divida en varias líneas */
+    }
+    .valores{
+        width: 100%;
+    }
+    input{
+        width: 100%;
+    }
+    
+}
