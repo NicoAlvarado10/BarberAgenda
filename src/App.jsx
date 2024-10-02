@@ -3,6 +3,7 @@ import { ReporteTurnos } from './ReporteTurnos';
 import { useState, useEffect } from 'react';
 import { db } from './Firebase';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import Swal from 'sweetalert2'; 
 
 export const App = () => {
   const [turnos, setTurnos] = useState([]);
@@ -14,7 +15,11 @@ export const App = () => {
 
   const validarCampos = () => {
     if (!nombre.trim() || !apellido.trim() || !fecha || !hora) {
-      alert('Por favor, completa todos los campos antes de agendar un turno.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Campos incompletos',
+        text: 'Por favor, completa todos los campos antes de agendar un turno.',
+      });
       return false;
     }
     return true;
@@ -28,6 +33,11 @@ export const App = () => {
       obtenerTurnos(); // Actualiza la lista de turnos
       limpiarCampos();
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Hubo un problema al agregar el turno.',
+      });
       console.error('Error al agregar turno:', error);
     }
   };
@@ -47,6 +57,11 @@ export const App = () => {
       await deleteDoc(doc(db, 'turnos', id));
       obtenerTurnos(); // Actualiza la lista de turnos
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Hubo un problema al eliminar el turno.',
+      });
       console.error('Error al eliminar turno:', error);
     }
   };
@@ -59,6 +74,11 @@ export const App = () => {
       obtenerTurnos(); // Actualiza la lista de turnos
       limpiarCampos();
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Hubo un problema al editar el turno.',
+      });
       console.error('Error al editar turno:', error);
     }
   };
@@ -69,6 +89,11 @@ export const App = () => {
       await updateDoc(turnoRef, { completado: !estadoActual }); // Alterna el estado
       obtenerTurnos(); // Actualiza la lista de turnos
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Hubo un problema al actualizar el estado del turno.',
+      });
       console.error('Error al marcar como completado:', error);
     }
   };
