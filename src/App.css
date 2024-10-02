@@ -170,7 +170,7 @@ tr:hover {
     table {
         
         overflow-x: auto; /* Habilitar scroll horizontal */
-        white-space: nowrap; /* Evitar que el contenido se divida en varias líneas */
+
     }
     .valores{
         width: 100%;
