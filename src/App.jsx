@@ -1,7 +1,7 @@
 import './App.css';
 import { ReporteTurnos } from './ReporteTurnos';
 import { useState, useEffect } from 'react';
-import { db } from './Firebase'; 
+import { db } from './Firebase';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 
 export const App = () => {
@@ -12,7 +12,16 @@ export const App = () => {
   const [hora, setHora] = useState('');
   const [turnoId, setTurnoId] = useState(null);
 
+  const validarCampos = () => {
+    if (!nombre.trim() || !apellido.trim() || !fecha || !hora) {
+      alert('Por favor, completa todos los campos antes de agendar un turno.');
+      return false;
+    }
+    return true;
+  };
+
   const agregarTurno = async () => {
+    if (!validarCampos()) return; // Valida los campos antes de proceder
     try {
       const nuevoTurno = { nombre, apellido, fecha, hora, completado: false };
       await addDoc(collection(db, 'turnos'), nuevoTurno);
@@ -43,6 +52,7 @@ export const App = () => {
   };
 
   const editarTurno = async () => {
+    if (!validarCampos()) return; // Valida los campos antes de proceder
     try {
       const turnoRef = doc(db, 'turnos', turnoId);
       await updateDoc(turnoRef, { nombre, apellido, fecha, hora });
@@ -136,12 +146,12 @@ export const App = () => {
           </thead>
           <tbody>
             {turnos.map((turno) => (
-              <tr key={turno.id} style={{ textDecoration: turno.completado ? 'line-through' : 'none' }}>
-                <td>{turno.nombre}</td>
-                <td>{turno.apellido}</td>
-                <td>{turno.fecha}</td>
-                <td>{turno.hora}</td>
-                <td className='acciones'>
+              <tr key={turno.id} >
+                <td style={{ textDecoration: turno.completado ? 'line-through' : 'none' }}>{turno.nombre}</td>
+                <td style={{ textDecoration: turno.completado ? 'line-through' : 'none' }}>{turno.apellido}</td>
+                <td style={{ textDecoration: turno.completado ? 'line-through' : 'none' }}>{turno.fecha}</td>
+                <td style={{ textDecoration: turno.completado ? 'line-through' : 'none' }}>{turno.hora}</td>
+                <td  className='acciones'>
                   <button onClick={() => { 
                       setTurnoId(turno.id); 
                       setNombre(turno.nombre); 
@@ -155,7 +165,7 @@ export const App = () => {
                   <button onClick={() => eliminarTurno(turno.id)}>🗑️</button>
 
                   <button onClick={() => marcarComoCompletado(turno.id, turno.completado)}>
-                    {turno.completado ? '✅' : '❌'}
+                    {turno.completado ? '❌' : '✅'}
                   </button>
                 </td>
               </tr>
