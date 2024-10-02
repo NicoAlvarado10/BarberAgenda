@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types'; // Importa PropTypes
+import PropTypes from 'prop-types'; 
+import { FaDollarSign } from 'react-icons/fa';
+import { FaChartBar } from 'react-icons/fa';
 
 export const ReporteTurnos = ({ turnos }) => {
   const [ganancias, setGanancias] = useState(0);
@@ -26,9 +28,9 @@ export const ReporteTurnos = ({ turnos }) => {
 
   return (
     <div className="reporte">
-      <h2>Reporte</h2>
-      <p>Total de turnos completados: {totalTurnos}</p>
-      <p>Ganancias del mes: 💲{ganancias.toLocaleString()}</p>
+      <h2 style={{ display: 'flex', alignItems:'center', gap:'5px' }}>Reporte <FaChartBar color='#007bff' /></h2>
+      <p>Turnos completados: {totalTurnos}</p>
+      <p >Ganancias del mes: <FaDollarSign color="green" />{ganancias.toLocaleString()}</p>
     </div>
   );
 };

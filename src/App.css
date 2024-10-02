@@ -23,6 +23,10 @@ h1 {
     padding-bottom: 1rem;
     font-size: 2.5rem;
     padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 h2 {
@@ -56,18 +60,20 @@ button {
     margin: 5px 0; /* Margen vertical */
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
     width: 100%; /* Siempre ocupará el 100% en pantallas pequeñas */
     text-align: center;
+    font-size: 15px;
+    background-color: #007bff;
+}
+button:hover{
+    background-color: #005bbb;
 }
 
-button:hover {
-    background-color: #0056b3;
-    
-}
+
+
 .reporte{
     box-shadow: 0px 0px 5px 0px rgba(185, 181, 181, 0.5);
     padding: 0px 20px;
@@ -117,6 +123,27 @@ tr:hover {
     justify-content: space-around;
     gap: 5px;
 }
+
+.btn__delete{
+    background-color: rgba(255, 0, 0, 0.523);
+}
+.btn__delete:hover{
+    background-color:rgba(255, 0, 0, 0.738); ;
+}
+.btn__edit{
+    background-color: #0066ffb1;
+}
+.btn__edit:hover{
+    background-color: #0066ffcc;
+}
+.btn__check{
+    background-color: #0066ff46;
+}
+.btn__check:hover{
+    background-color: #0066ff63;
+}
+
+
 
 /* Estilos para pantallas pequeñas */
 @media (max-width: 630px) {

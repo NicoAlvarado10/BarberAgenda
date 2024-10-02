@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import { db } from './Firebase';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import Swal from 'sweetalert2'; 
+import { FaTrash } from 'react-icons/fa';
+import { FaRegEdit } from 'react-icons/fa';
+import { FaCut } from 'react-icons/fa';
 
 export const App = () => {
   const [turnos, setTurnos] = useState([]);
@@ -112,7 +115,7 @@ export const App = () => {
 
   return (
     <main>
-      <h1>BarberAgenda✂️</h1>
+      <h1>BarberAgenda <FaCut/></h1>
       <section className='app'>
         <form onSubmit={(e) => { e.preventDefault(); }}> {/* Agregar preventDefault */}
           <label>Nombre:
@@ -177,19 +180,21 @@ export const App = () => {
                 <td style={{ textDecoration: turno.completado ? 'line-through' : 'none' }}>{turno.fecha}</td>
                 <td style={{ textDecoration: turno.completado ? 'line-through' : 'none' }}>{turno.hora}</td>
                 <td  className='acciones'>
-                  <button onClick={() => { 
+                  <button
+                      className='btn__edit'
+                      onClick={() => { 
                       setTurnoId(turno.id); 
                       setNombre(turno.nombre); 
                       setApellido(turno.apellido); 
                       setFecha(turno.fecha); 
                       setHora(turno.hora); 
                   }}>
-                    📝
+                    <FaRegEdit color='black'/>
                   </button>
 
-                  <button onClick={() => eliminarTurno(turno.id)}>🗑️</button>
+                  <button className='btn__delete' onClick={() => eliminarTurno(turno.id)}><FaTrash  color='red'/></button>
 
-                  <button onClick={() => marcarComoCompletado(turno.id, turno.completado)}>
+                  <button className='btn__check' onClick={() => marcarComoCompletado(turno.id, turno.completado)}>
                     {turno.completado ? '❌' : '✅'}
                   </button>
                 </td>
