@@ -10,7 +10,7 @@ export const ReporteTurnos = ({ turnos }) => {
   useEffect(() => {
     const calcularReporte = () => {
       const turnosFiltrados = turnos.filter(turno => turno.completado);
-      const totalGanancias = turnosFiltrados.length * 6500;
+      const totalGanancias = turnosFiltrados.length * 6000;
 
       // Obtener el mes actual para el corte mensual
       const mesActual = new Date().getMonth() + 1; // Enero es 0
