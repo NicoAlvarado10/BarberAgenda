@@ -118,6 +118,7 @@ export const App = () => {
       <h1>BarberAgenda <FaCut/></h1>
       <section className='app'>
         <form onSubmit={(e) => { e.preventDefault(); }}> {/* Agregar preventDefault */}
+          <h2>Agenda un turno</h2>
           <label>Nombre:
             <input
               type="text"
